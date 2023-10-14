@@ -20,7 +20,7 @@ class Listing:
     # overload constructor to take in a firebase dictionary
     @staticmethod
     def readFromDict(listing_dict):
-        return Listing(listing_dict["id"], listing_dict["product_name"], listing_dict["photo"], listing_dict["description"], listing_dict["user_id"], listing_dict["categories"], listing_dict["state"], listing_dict["measurement"], listing_dict["hashtags"], listing_dict["date"], listing_dict["price"])
+        return Listing(id=listing_dict["id"], product_name=listing_dict["product_name"], photo=listing_dict["photo"], description=listing_dict["description"], user_id=listing_dict["user_id"], categories=listing_dict["categories"], state=listing_dict["state"], measurement=listing_dict["measurement"], hashtags=listing_dict["hashtags"], date=listing_dict["date"], price=listing_dict["price"])
 
     def serialize(self):
         return {

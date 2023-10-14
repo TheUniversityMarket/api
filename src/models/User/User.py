@@ -2,8 +2,11 @@ import json
 from uuid import uuid4
 
 class User:
-    def __init__(self,username,password,email,verified,name,number,address,listings,language, salt = None) -> None:
-        self.id = str(uuid4())
+    def __init__(self,username,password,email,verified,name,number,address,listings,language, id = None, salt = None) -> None:
+        if id is None:
+            self.id = str(uuid4())
+        else:
+            self.id = id
         self.username = username
         self.password = password
         self.email = email
@@ -18,7 +21,7 @@ class User:
     # overload constructor to take in a firebase dictionary
     @staticmethod
     def readFromDict(user_dict) -> None:
-        return User(user_dict["username"], user_dict["password"], user_dict["email"], user_dict["verified"], user_dict["name"], user_dict["number"], user_dict["address"], user_dict["listings"], user_dict["language"], user_dict["salt"])
+        return User(id=user_dict["id"], username=user_dict["username"], password=user_dict["password"], email=user_dict["email"], verified=user_dict["verified"], name=user_dict["name"], number=user_dict["number"], address=user_dict["address"], listings=user_dict["listings"], language=user_dict["language"], salt=user_dict["salt"])
     
     def serialize(self):
         return {
