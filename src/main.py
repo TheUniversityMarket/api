@@ -43,6 +43,11 @@ def _sign_up(request: SignUpRequest):
 # listing routes
 from src.request_models.listing_requests import *
 
+from src.api.listing.create_listing import create_listing
+@app.post("/create_listing")
+def _create_listing(request: CreateListingRequest):
+    return create_listing(db=db, product_name=request.product_name, photo=request.photo, description=request.description, user_id=request.user_id, categories=request.categories, state=request.state, measurement=request.measurement, hashtags=request.hashtags, date=request.date, price=request.price)
+
 # TESTS
 from src.api.tests.listing_tests import *
 from src.api.tests.user_tests import *
