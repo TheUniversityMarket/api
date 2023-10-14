@@ -17,8 +17,13 @@ from src.api.tests.user_tests import *
 def _test_sign_up():
     return test_sign_up(db)
 
-@app.get("/test/sign_in")
-def _test_sign_in():
-    return test_sign_in(db)
+@app.get("/test/sign_in_by_id")
+def _test_sign_in_by_id():
+    return test_sign_in_by_id(db)
+
+@app.get("/test/sign_in_by_username")
+def _test_sign_in_by_username():
+    return test_sign_in_by_username(db)
+
     
 
