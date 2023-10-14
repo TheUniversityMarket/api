@@ -48,6 +48,11 @@ from src.api.listing.create_listing import create_listing
 def _create_listing(request: CreateListingRequest):
     return create_listing(db=db, product_name=request.product_name, photo=request.photo, description=request.description, user_id=request.user_id, categories=request.categories, state=request.state, measurement=request.measurement, hashtags=request.hashtags, date=request.date, price=request.price)
 
+from src.api.listing.get_listing import *
+@app.get("/get_all_listings")
+def _get_all_listings():
+    return get_all_listings(db)
+
 # TESTS
 from src.api.tests.listing_tests import *
 from src.api.tests.user_tests import *
