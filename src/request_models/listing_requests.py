@@ -11,3 +11,6 @@ class CreateListingRequest(BaseModel):
     hashtags: list
     date: str
     price: float
+
+class GetListingsByUserIdRequest(BaseModel):
+    user_id: str

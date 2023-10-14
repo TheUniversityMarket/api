@@ -9,6 +9,10 @@ def get_listing_by_id(db, listing_id) -> Listing or None:
     else:
         return None
     
+def get_listings_by_user_id(db, user_id) -> list:
+    listings = db.collection(u'listings').where(filter=FieldFilter("user_id", "==", user_id)).get()
+    return [Listing.readfromDict(listing.to_dict()) for listing in listings]
+    
 def get_all_listings(db) -> list:
     listings = db.collection(u'listings').get()
     return [Listing.readfromDict(listing.to_dict()) for listing in listings]

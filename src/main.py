@@ -53,6 +53,10 @@ from src.api.listing.get_listing import *
 def _get_all_listings():
     return get_all_listings(db)
 
+@app.get("/get_listings_by_user_id")
+def _get_listings_by_user_id(request: GetListingsByUserIdRequest):
+    return get_listings_by_user_id(db, request.user_id)
+
 # TESTS
 from src.api.tests.listing_tests import *
 from src.api.tests.user_tests import *
