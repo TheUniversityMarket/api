@@ -9,6 +9,10 @@ db = start_firebase()
 def read_root():
     return {"Hello": "World"}
 
+@app.get("/ping")
+def ping():
+    return {"ping": "pong"}
+
 # TESTS
 from src.api.tests.listing_tests import *
 from src.api.tests.user_tests import *

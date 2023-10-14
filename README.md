@@ -1,7 +1,7 @@
 # UMarket API
 
 ## Description
-Dockerized FastAPI based API connecting UMarket to a Firebase Admin SDK.
+Dockerized FastAPI based API connecting UMarket to a Firebase Admin SDK deployed on Google Cloud Run.
 
 ## Tech Stack
 - Python 3.9
@@ -9,6 +9,7 @@ Dockerized FastAPI based API connecting UMarket to a Firebase Admin SDK.
 - Firebase Admin SDK
 - Docker
 - Docker Compose
+- Google Cloud Run
 
 ## Installation
 1. Clone the repository
