@@ -26,4 +26,4 @@ def sign_up(db, user_dict) -> dict:
     except Exception as e:
         return {'success':False,'error': str(e)}
     
-    return {'success':True,'error': None}
+    return {'success':True,'error': None, 'user': user}
