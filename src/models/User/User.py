@@ -2,7 +2,7 @@ import json
 from uuid import uuid4
 
 class User:
-    def __init__(self,username,password,email,verified,name,number,address,listings,language) -> None:
+    def __init__(self,username,password,email,verified,name,number,address,listings,language, salt = None) -> None:
         self.id = str(uuid4())
         self.username = username
         self.password = password
@@ -13,31 +13,26 @@ class User:
         self.address = address
         self.listings = listings
         self.language = language
+        self.salt = salt
 
     # overload constructor to take in a firebase dictionary
-    def __init__ (self, user_dict) -> None:
-        self.id = user_dict["id"]
-        self.username = user_dict["username"]
-        self.password = user_dict["password"]
-        self.email = user_dict["email"]
-        self.verified = user_dict["verified"]
-        self.name = user_dict["name"]
-        self.number = user_dict["number"]
-        self.address = user_dict["address"]
-        self.listings = user_dict["listings"]
-        self.language = user_dict["language"]
+    @staticmethod
+    def readFromDict(user_dict) -> None:
+        return User(user_dict["username"], user_dict["password"], user_dict["email"], user_dict["verified"], user_dict["name"], user_dict["number"], user_dict["address"], user_dict["listings"], user_dict["language"], user_dict["salt"])
     
     def serialize(self):
         return {
             "id": self.id,
             "username": self.username,
+            "password": self.password,
             "email": self.email,
             "verified": self.verified,
             "name": self.name,
             "number": self.number,
             "address": self.address,
             "listings": self.listings,
-            "language": self.language
+            "language": self.language,
+            "salt": self.salt
         }
 
     
