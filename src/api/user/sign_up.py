@@ -3,16 +3,16 @@ from vgem import EM
 from src.models.User.User import User
 from src.firebase.user.create import create_user
 
-def sign_up(db, user_dict) -> dict:
+def sign_up(db, username, password, email, name, number, address, language) -> dict:
     try:
         # hash password
         em = EM()
-        hash_and_salt = em.hash(user_dict['password'], True)
-        user_dict['password'] = hash_and_salt['hash']
-        user_dict['salt'] = hash_and_salt['salt']
+        hash_and_salt = em.hash(password, True)
+        password = hash_and_salt['hash']
+        salt = hash_and_salt['salt']
 
         # create user object
-        user = User.readFromDict(user_dict)
+        user = User(username=username, password=password, salt=salt, email=email, verified=False, name=name, number=number, address=address, listings=[], language=language)
     
         # checks - add more later!
 

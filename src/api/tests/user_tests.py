@@ -1,5 +1,5 @@
 from src.models.User.User import User
-from src.api.user.create_user import sign_up
+from src.api.user.sign_up import sign_up
 from src.api.user.sign_in import sign_in_by_id, sign_in_by_username
 
 def test_sign_up(db) -> dict:
