@@ -1,7 +1,9 @@
 # UMarket API
 
 ## Description
-Dockerized FastAPI based API connecting UMarket to a Firebase Admin SDK deployed on Google Cloud Run.
+Dockerized FastAPI based API connecting UMarket to a Firebase Admin SDK deployed on Digital Ocean. 
+Live @ https://lionfish-app-4kgmb.ondigitalocean.app/ 
+Docs @ https://lionfish-app-4kgmb.ondigitalocean.app/docs
 
 ## Tech Stack
 - Python 3.9
@@ -9,7 +11,7 @@ Dockerized FastAPI based API connecting UMarket to a Firebase Admin SDK deployed
 - Firebase Admin SDK
 - Docker
 - Docker Compose
-- Google Cloud Run
+- Digital Ocean
 
 ## Installation
 1. Clone the repository

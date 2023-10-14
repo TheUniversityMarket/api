@@ -7,7 +7,6 @@ from src.firebase.auth import start_firebase
 app = FastAPI()
 db = start_firebase()
 
-'''
 origins = [
     "*",
 ]
@@ -19,7 +18,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-'''
 
 @app.get("/")
 def _read_root():
@@ -33,12 +31,12 @@ def _ping():
 from src.request_models.user_requests import *
 
 from src.api.user.sign_in import sign_in_by_username
-@app.get("/sign_in")
+@app.post("/sign_in")
 def _sign_in(request: SignInRequest):
     return sign_in_by_username(db=db, username=request.username, password=request.password)
 
 from src.api.user.sign_up import sign_up
-@app.get("/sign_up")
+@app.post("/sign_up")
 def _sign_up(request: SignUpRequest):
     return sign_up(db=db, username=request.username, password=request.password, email=request.email, name=request.name, number=request.number, address=request.address, language=request.language)
 
