@@ -6,7 +6,7 @@ from src.api.user.verify import check_verification_code
 
 def sign_up(db, username, password, email, name, number, address, language, verification_code, USERS_TO_VERIFY) -> dict:
     # check verification code
-    if not check_verification_code(db, email, username, verification_code, USERS_TO_VERIFY):
+    if not check_verification_code(db, email, verification_code, USERS_TO_VERIFY):
         return {'success':False,'error': "Invalid verification code"}
 
     try:
