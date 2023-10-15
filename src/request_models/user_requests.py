@@ -12,6 +12,11 @@ class SignUpRequest(BaseModel):
     number: str
     address: str
     language: str
+    verification_code: str
 
 class GetListingsBySearchRequest(BaseModel):
     search: str
+
+class VerifyRequest(BaseModel):
+    email: str
+    user_id: str

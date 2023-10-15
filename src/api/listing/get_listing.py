@@ -26,5 +26,5 @@ def get_listings_by_categories(db, categories) -> list:
 def get_listings_by_search(db, search_term) -> list:
     listings = db.collection(u'listings').get()
     listings = [Listing.readFromDict(listing.to_dict()) for listing in listings]
-    listings = [listing for listing in listings if (search_term.lower() in listing.title.lower() or search_term.lower() in listing.description.lower() or search_term.lower() in listing.categories.lower())]
-    return [Listing.readFromDict(listing.to_dict()) for listing in listings]
+    listings = [listing for listing in listings if (search_term.lower() in listing.product_name.lower() or search_term.lower() in listing.description.lower())]
+    return listings
