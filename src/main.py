@@ -43,10 +43,10 @@ def _sign_up(request: SignUpRequest):
 # listing routes
 from src.request_models.listing_requests import *
 
-from src.api.listing.create_listing import create_listing
+from src.api.listing.create_listing import post_listing
 @app.post("/create_listing")
 def _create_listing(request: CreateListingRequest):
-    return create_listing(db=db, product_name=request.product_name, photo=request.photo, description=request.description, user_id=request.user_id, categories=request.categories, state=request.state, measurement=request.measurement, hashtags=request.hashtags, date=request.date, price=request.price)
+    return post_listing(db=db, product_name=request.product_name, photo=request.photo, description=request.description, user_id=request.user_id, categories=request.categories, state=request.state, measurement=request.measurement, hashtags=request.hashtags, date=request.date, price=request.price)
 
 from src.api.listing.get_listing import *
 @app.get("/get_all_listings")
@@ -76,6 +76,14 @@ def _test_sign_in_by_id():
 @app.get("/test/sign_in_by_username")
 def _test_sign_in_by_username():
     return test_sign_in_by_username(db)
+
+@app.get("/test/create_listing")
+def _test_create_listing():
+    return test_create_listing(db)
+
+@app.get("/test/get_all_listings")
+def _test_get_all_listings():
+    return _test_get_all_listings()
 
     
 

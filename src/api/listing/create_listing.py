@@ -2,7 +2,7 @@ from src.models.Listing.Listing import Listing
 
 from src.firebase.listing.create import create_listing
 
-def create_listing(db, product_name, photo, description, user_id, categories, state, measurement, hashtags, date, price) -> dict:
+def post_listing(db, product_name, photo, description, user_id, categories, state, measurement, hashtags, date, price) -> dict:
     try:
         # create listing object
         listing = Listing(product_name, photo, description, user_id, categories, state, measurement, hashtags, date, price)
