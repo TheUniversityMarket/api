@@ -53,11 +53,11 @@ from src.api.listing.get_listing import *
 def _get_all_listings():
     return get_all_listings(db)
 
-@app.get("/get_listings_by_user_id")
+@app.post("/get_listings_by_user_id")
 def _get_listings_by_user_id(request: GetListingsByUserIdRequest):
     return get_listings_by_user_id(db, request.user_id)
 
-@app.get("/get_listings_by_search")
+@app.post("/get_listings_by_search")
 def _get_listings_by_search(request: GetListingsBySearchRequest):
     return get_listings_by_search(db, request.search)
 
