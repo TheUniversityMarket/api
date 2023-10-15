@@ -7,6 +7,8 @@ from src.firebase.auth import start_firebase
 app = FastAPI()
 db = start_firebase()
 
+USERS_TO_VERIFY = []
+
 origins = [
     "*",
 ]
@@ -38,14 +40,12 @@ def _sign_in(request: SignInRequest):
 from src.api.user.sign_up import sign_up
 @app.post("/sign_up")
 def _sign_up(request: SignUpRequest):
-    return sign_up(db=db, username=request.username, password=request.password, email=request.email, name=request.name, number=request.number, address=request.address, language=request.language, verification_code=request.verification_code)
+    return sign_up(db=db, username=request.username, password=request.password, email=request.email, name=request.name, number=request.number, address=request.address, language=request.language, verification_code=request.verification_code, USERS_TO_VERIFY=USERS_TO_VERIFY)
 
 from src.api.user.verify import get_verification_code
-USERS_TO_VERIFY = []
-
 @app.post("/get_verification_code")
 def _verify(request: VerifyRequest):
-    return get_verification_code(db, request.email, request.user_id)
+    return get_verification_code(db, request.email, USERS_TO_VERIFY)
 
 # listing routes
 from src.request_models.listing_requests import *

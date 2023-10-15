@@ -2,8 +2,13 @@ from vgem import EM
 
 from src.models.User.User import User
 from src.firebase.user.create import create_user
+from src.api.user.verify import check_verification_code
 
-def sign_up(db, username, password, email, name, number, address, language) -> dict:
+def sign_up(db, username, password, email, name, number, address, language, verification_code, USERS_TO_VERIFY) -> dict:
+    # check verification code
+    if not check_verification_code(db, email, username, verification_code, USERS_TO_VERIFY):
+        return {'success':False,'error': "Invalid verification code"}
+
     try:
         # hash password
         em = EM()

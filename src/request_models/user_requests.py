@@ -19,4 +19,3 @@ class GetListingsBySearchRequest(BaseModel):
 
 class VerifyRequest(BaseModel):
     email: str
-    user_id: str
