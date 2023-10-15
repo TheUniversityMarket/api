@@ -19,7 +19,10 @@ def sign_up(db, username, password, email, name, number, address, language) -> d
         # use python library
         if "@" not in user.email: 
          return {'success':False,'error': "Invalid email"}
-    
+        
+        if "gatech" not in user.email:
+            return {'success':False,'error': "Must use a Georgia Tech email"}
+            
         # firebase 
         create_user(db, user)
 
