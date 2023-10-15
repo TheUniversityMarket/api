@@ -22,3 +22,10 @@ def get_listings_by_categories(db, categories) -> list:
     for category in categories:
         listings += db.collection(u'listings').where(filter=FieldFilter("categories", "array_contains", category)).get()
     return [Listing.readfromDict(listing.to_dict()) for listing in listings]
+
+def get_listings_by_search(db, search_term) -> list:
+
+    listings = db.collection(u'listings').get()
+    listings = [Listing.readfromDict(listing.to_dict()) for listing in listings]
+    listings = [listing for listing in listings if (search_term.lower() in listing.title.lower() or search_term.lower() in listing.description.lower() or search_term.lower() in listing.categories.lower())]
+    return [Listing.readfromDict(listing.to_dict()) for listing in listings]

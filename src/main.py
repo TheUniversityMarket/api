@@ -57,6 +57,10 @@ def _get_all_listings():
 def _get_listings_by_user_id(request: GetListingsByUserIdRequest):
     return get_listings_by_user_id(db, request.user_id)
 
+@app.get("/get_listings_by_search")
+def _get_listings_by_search(request: GetListingsBySearchRequest):
+    return get_listings_by_search(db, request.search)
+
 # TESTS
 from src.api.tests.listing_tests import *
 from src.api.tests.user_tests import *

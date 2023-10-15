@@ -12,3 +12,6 @@ class SignUpRequest(BaseModel):
     number: str
     address: str
     language: str
+
+class GetListingsBySearchRequest(BaseModel):
+    search: str
