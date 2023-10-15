@@ -1,6 +1,6 @@
 from uuid import uuid4
 from src.models.User.User import User
-from mailjet import send_message
+from src.mailjet import send_message
 
 def get_verification_code(db, email, USERS_TO_VERIFY):
     try:
